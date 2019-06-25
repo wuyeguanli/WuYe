@@ -13,8 +13,10 @@ import webadv.Face.repository.ListRepository;
 @Controller
 public class HomeController {
 	@Autowired
-	private CheweiRepository cw_findAll;//查找所有
+	private CheweiRepository cw_findAll;//查找共享
 	
+	@Autowired
+	private CheweiRepository cw_findPer;//查找私人
 	@Autowired
 	private CheweiRepository cw_selectID;//模糊查询
 	
@@ -27,6 +29,7 @@ public class HomeController {
 	@Autowired
 	private FeiyongRepository fy_fingALl;
 	
+	
 	@Autowired
 	private ListRepository cost_call;
 	
@@ -34,7 +37,7 @@ public class HomeController {
 	public String Index(Model model) {
 			return "index";
 	} 
-	@GetMapping("/login")
+	@GetMapping("/login") //登陆
 	public String login(Model model) {
 			return "home";
 	}
@@ -42,7 +45,7 @@ public class HomeController {
 	public String reminder(Model model) {
 		return "lhy_CostReminder";
 	}
-	@GetMapping("call")
+	@GetMapping("call")//费用催缴
 	public String call(int id,String num,String result,String time,Model model) {
 //		String sql="insert into cost values("+id+",'"+num+"','"+result+"','"+time+"')";
 //		System.out.print(sql);
@@ -50,6 +53,7 @@ public class HomeController {
 		model.addAttribute("list_cost",cost_call.findAll());
 		return "lhy_CostCall";
 	}
+	
 	@GetMapping("/modify")
 	public String modify(Model model) {
 		model.addAttribute("feiyong_list",fy_fingALl.findAll());
@@ -62,7 +66,14 @@ public class HomeController {
 		return "lhy_ParkManagement";
 	}
 	
-	@GetMapping("/chewei_delete")
+	
+	@GetMapping("/person")
+	public String person(Model model) {
+		model.addAttribute("chewei_list",cw_findPer.findPer());	
+		return "lhy_ParkPerson";
+	}
+	
+	@GetMapping("/chewei_delete")	//删除
 	public String chewei_delete(int id ,Model model) {
 		System.out.println(id);
 		model.addAttribute("del_message",cw_deleteID.delID(id));	
@@ -70,18 +81,33 @@ public class HomeController {
 		return "lhy_ParkManagement";
 	}
 	
-	@GetMapping("/chewei_update")
+	@GetMapping("/chewei_update")	//更新界面
 	public String chewei_update(int id ,Model model) {
 		model.addAttribute("id",id);
 		return "lhy_UpdateState";
 	}
 	
-	@GetMapping("/state_update")
+	@GetMapping("/state_update")	//更新后的查询
 	public String state_update(int id,String address, String state,Model model) {
 		model.addAttribute("update_message",cw_updateID.update(id, address,state));	
 		model.addAttribute("chewei_list",cw_updateID.findAll());
 		return "lhy_ParkManagement";
 	}
+	
+	
+	@GetMapping("/chewei_update_person")	//更新界面
+	public String chewei_update_person(int id ,Model model) {
+		model.addAttribute("id",id);
+		return "lhy_UpdateState_Person";
+	}
+	
+	@GetMapping("/state_update_person")	//更新后的查询
+	public String state_update_person(int id,String address, String state,Model model) {
+		model.addAttribute("update_message",cw_updateID.update(id, address,state));	
+		model.addAttribute("chewei_list",cw_updateID.findPer());
+		return "lhy_ParkPerson";
+	}
+
 	
 	
 	@GetMapping("/state")
@@ -90,7 +116,7 @@ public class HomeController {
 		
 	}
 
-	@GetMapping("/state_select")
+	@GetMapping("/state_select")//车位信息删除
 	public String Park_select(int id,Model model) {
 		model.addAttribute("id",id);
 		model.addAttribute("chewei_list",cw_selectID.findID(id));	
