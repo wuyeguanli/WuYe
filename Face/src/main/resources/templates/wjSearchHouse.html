@@ -317,14 +317,20 @@
 
 										<tbody>
 											<tr th:each="fangchan,status : ${fangchan_list}">
-												<td th:text="${fangchan.address}"></td>
-												<td th:text="${fangchan.size}"></td>
-												<td th:text="${fangchan.state}"></td>
-												<td th:text="${fangchan.specifications}"></td>
-												<td>
-													<button class="btn btn-sm" type="button">修改</button>
-													<button class="btn btn-sm" type="button">删除</button>
-												</td>
+												<form action="deleteHouse" method="get">
+													<input type="hidden" name="address1"
+														th:value="${fangchan.address}">
+													<td th:text="${fangchan.address}"></td>
+													<td th:text="${fangchan.size}"></td>
+													<td th:text="${fangchan.state}"></td>
+													<td th:text="${fangchan.specifications}"></td>
+													<td><a
+														th:href="@{wjUpdateHouse(address=${fangchan.address})}">
+															<button class="btn btn-sm" type="button">修改</button>
+													</a>
+														<button class="btn btn-sm" type="submit">删除</button>
+													</td>
+												</form>
 											</tr>
 										</tbody>
 									</table>

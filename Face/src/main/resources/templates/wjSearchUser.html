@@ -313,15 +313,20 @@
 										</thead>
 										<tbody>
 											<tr th:each="huzhu,status : ${huzhu_list}">
+												<form action="deleteUser" method="get">
+													<input type="hidden" name="address2"
+														th:value="${zhuhu.address}">
 												<td th:text="${status.count}"></td>
 												<td th:text="${huzhu.address}"></td>
 												<td th:text="${huzhu.name}"></td>
 												<td th:text="${huzhu.tel}"></td>
 												<td th:text="${huzhu.id}"></td>
-												<td>
-													<button class="btn btn-sm" type="button">修改</button>
-													<button class="btn btn-sm" type="button">删除</button>
-												</td>
+												<td><a
+													th:href="@{wjUpdateUser(address=${huzhu.address})}">
+														<button class="btn btn-sm" type="button">修改</button>
+												</a>
+													<button class="btn btn-sm" type="submit">删除</button></td>
+												</form>
 											</tr>
 
 										</tbody>

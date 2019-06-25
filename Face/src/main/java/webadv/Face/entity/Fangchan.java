@@ -2,7 +2,7 @@ package webadv.Face.entity;
 
 public class Fangchan {
 	private String address;
-	private float size;
+	private String size;
 	private String state;
 	private String specifications;
 	public String getAddress() {
@@ -11,10 +11,11 @@ public class Fangchan {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public float getSize() {
+	
+	public String getSize() {
 		return size;
 	}
-	public void setSize(float size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 	public String getState() {

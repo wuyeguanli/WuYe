@@ -291,50 +291,41 @@
 								<div class="x_content">
 									<br />
 									<form id="demo-form2" data-parsley-validate
-										class="form-horizontal form-label-left">
-
+										class="form-horizontal form-label-left" action="wjSearchUser1">
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="first-name">房产ID<span class="required">*</span>
+												for="first-name">ID：<span class="required"></span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
 												<input type="text" id="first-name" required="required"
-													class="form-control col-md-7 col-xs-12">
+													name="id" class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">姓名<span class="required">*</span>
+												for="first-name">姓名：<span class="required"></span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="first-name" required="required"
+													name="name" class="form-control col-md-7 col-xs-12">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12"
+												for="last-name">电话：<span class="required"></span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="text" id="last-name" name="tel"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="control-label col-md-3 col-sm-3 col-xs-12">性别</label>
-											<div class="col-md-6 col-sm-6 col-xs-12">
-												<div id="gender" class="btn-group" data-toggle="buttons">
-													<label class="btn btn-default"
-														data-toggle-class="btn-primary"
-														data-toggle-passive-class="btn-default"> <input
-														type="radio" name="gender" value="male"> &nbsp; 男
-														&nbsp;
-													</label> <label class="btn btn-primary"
-														data-toggle-class="btn-primary"
-														data-toggle-passive-class="btn-default"> <input
-														type="radio" name="gender" value="female"> 女
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
 											<label for="middle-name"
-												class="control-label col-md-3 col-sm-3 col-xs-12">电话</label>
+												class="control-label col-md-3 col-sm-3 col-xs-12">地址：</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
 												<input id="middle-name"
 													class="form-control col-md-7 col-xs-12" type="text"
-													name="middle-name">
+													name="address">
 											</div>
 										</div>
 
